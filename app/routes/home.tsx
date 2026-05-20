@@ -29,8 +29,7 @@ export default function Home() {
             ref={heroRef}
             className="relative h-screen bg-cover bg-center"
             style={{
-               backgroundImage:
-                  "url('../../public/9874a276-d03d-4d71-8a24-a3c449f8c06a.jpg')",
+               backgroundImage: `url(${import.meta.env.BASE_URL}Top.jpg)`,
             }}
          >
             <div className="absolute inset-0 bg-black/40" />
