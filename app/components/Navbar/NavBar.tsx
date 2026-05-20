@@ -1,5 +1,6 @@
 import NavBarElement from './NavBarElement'
 import WhatsAppButton from './WhatsappButton'
+import ContactDropdownNav from './ContactDropdown'
 import { Link } from 'react-router'
 import { useEffect, useState } from 'react'
 
@@ -7,24 +8,13 @@ export default function Navbar({ heroHeight = 0, forceScrolled = false }) {
    const [scrolled, setScrolled] = useState(forceScrolled)
 
    useEffect(() => {
-      // Legal pages etc.
-      if (forceScrolled) {
-         setScrolled(true)
-         return
-      }
-
       const handleScroll = () => {
-         // Trigger ONLY after hero fully passed
-         setScrolled(window.scrollY >= heroHeight)
+         setScrolled(forceScrolled || window.scrollY > heroHeight)
       }
 
       handleScroll()
-
       window.addEventListener('scroll', handleScroll)
-
-      return () => {
-         window.removeEventListener('scroll', handleScroll)
-      }
+      return () => window.removeEventListener('scroll', handleScroll)
    }, [heroHeight, forceScrolled])
    return (
       <header
@@ -75,9 +65,9 @@ export default function Navbar({ heroHeight = 0, forceScrolled = false }) {
                   <div className="flex items-center gap-8">
                      <NavBarElement text="Produkte" href="#produkte" />
                      <NavBarElement text="Service" href="#service" />
-                     <NavBarElement text="Magazin" href="#magazin" />
+                     <NavBarElement text="Referenzen" href="#referenzen" />
                      <NavBarElement text="Über uns" href="#uber-uns" />
-                     <NavBarElement text="Kontakt" href="#kontakt" />
+                     <ContactDropdownNav />
                   </div>
                </nav>
             </div>

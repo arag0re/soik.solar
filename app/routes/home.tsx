@@ -76,8 +76,11 @@ export default function Home() {
                      </AnimatePresence>
                   </div>
 
-                  <button className="mt-10 bg-yellow-400 hover:bg-yellow-300 text-black px-8 py-5 rounded-2xl text-lg font-bold transition">
-                     Jetzt starten
+                  <button
+                     onClick={() => (window.location.href = '/roi')}
+                     className="mt-10 bg-yellow-400 hover:bg-yellow-300 text-black px-8 py-5 rounded-2xl text-lg font-bold transition"
+                  >
+                     Jetzt Amortisationsberechnung durchführen
                   </button>
                </div>
             </div>

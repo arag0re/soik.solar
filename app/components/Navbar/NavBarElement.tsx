@@ -9,7 +9,7 @@ export default function NavBarElement({ text, href }: NavBarElementProps) {
    return (
       <motion.a
          href={href}
-         className="relative flex items-center gap-1 text-black font-semibold no-underline"
+         className="relative flex items-center gap-1 font-semibold no-underline block text-black"
          whileHover="hover"
          initial="rest"
          animate="rest"

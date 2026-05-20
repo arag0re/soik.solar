@@ -102,8 +102,8 @@ export default function Footer({ heroHeight = 0 }) {
                   <a href="/imprint" className="hover:text-white transition">
                      Impressum
                   </a>
-                  <a href="#" className="hover:text-white transition">
-                     Datenschutz
+                  <a href="/privacy" className="hover:text-white transition">
+                     Datenschutzerklärung
                   </a>
                </div>
             </div>
