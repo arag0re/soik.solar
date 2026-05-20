@@ -1,0 +1,1 @@
+import{t as e}from"./imprint-ChkLYafy.js";export{e as default};
