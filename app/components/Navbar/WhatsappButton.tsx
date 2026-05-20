@@ -1,23 +1,22 @@
 import { MessageCircle } from 'lucide-react'
 
-export default function WhatsAppButton({ scrolled }: { scrolled: boolean }) {
+export default function WhatsAppButton({ scrolled }) {
    return (
       <a
          href="https://wa.me/491234567890"
          target="_blank"
          rel="noopener noreferrer"
-         className={`fixed top-3 right-6 z-50 flex items-center gap-3 px-4 py-3 rounded-2xl border-2 text-white hover:bg-white hover:text-black transition ${
+         className={`group fixed top-5 right-6 z-50 flex items-center gap-2 px-3 py-2 rounded-xl border transition-all duration-300 hover:scale-105 active:scale-95 ${
             scrolled
-               ? 'bg-white border-black text-black'
-               : 'bg-transparent border-white text-white'
+               ? 'bg-white border-black text-black hover:bg-black hover:text-white'
+               : 'bg-transparent border-white text-white hover:bg-white hover:text-black'
          }`}
       >
-         <span
-            className={`text-lg font-semibold${scrolled ? ' text-black' : ' text-white'}`}
-         >
+         <span className="text-sm font-semibold transition-colors duration-300">
             WhatsApp
          </span>
-         <MessageCircle color={scrolled ? '#000' : '#fff'} size={22} />
+
+         <MessageCircle className="transition-colors duration-300" size={18} />
       </a>
    )
 }

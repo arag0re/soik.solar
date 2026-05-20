@@ -21,8 +21,8 @@ export default function Navbar({ heroHeight = 0 }) {
             scrolled ? 'bg-white shadow-none' : 'bg-transparent shadow-none'
          }`}
       >
-         <div className="flex items-center flex-shrink-0">
-            <div className="flex items-center flex-shrink-0 pl-4">
+         <div className="flex items-center flex-shrink-0 pb-3">
+            <div className="flex items-center flex-shrink-0 pl-4 pt-2">
                <svg
                   className="w-12 h-auto mr-1"
                   version="1.1"
@@ -59,7 +59,7 @@ export default function Navbar({ heroHeight = 0 }) {
             </div>
 
             {/* CENTER NAV */}
-            <div className="flex-1 flex justify-center pt-4">
+            <div className="flex-1 flex justify-center pt-3">
                <nav className="bg-white rounded-3xl px-8 h-14 flex items-center">
                   <div className="flex items-center gap-8">
                      <NavBarElement text="Produkte" href="#produkte" />

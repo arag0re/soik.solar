@@ -1,7 +1,7 @@
-import { Link } from 'react-router'
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import NavBar from '~/components/Navbar/NavBar'
+import Footer from '~/components/Footer/Footer'
 
 export default function Home() {
    const rotatingTexts = [
@@ -21,7 +21,7 @@ export default function Home() {
    }, [])
 
    return (
-      <main className="w-full overflow-hidden">
+      <main className="w-full overflow-hidden bg-[#0B2D5C]">
          <NavBar heroHeight={heroRef.current?.offsetHeight || 0} />
 
          {/* HERO */}
@@ -30,7 +30,7 @@ export default function Home() {
             className="relative h-screen bg-cover bg-center"
             style={{
                backgroundImage:
-                  "url('../../images/9874a276-d03d-4d71-8a24-a3c449f8c06a.jpg')",
+                  "url('../../public/9874a276-d03d-4d71-8a24-a3c449f8c06a.jpg')",
             }}
          >
             <div className="absolute inset-0 bg-black/40" />
@@ -155,6 +155,7 @@ export default function Home() {
                </p>
             </div>
          </section>
+         <Footer heroHeight={heroRef.current?.offsetHeight || 0} />
       </main>
    )
 }
