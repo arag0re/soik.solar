@@ -99,7 +99,7 @@ export default function Footer({ heroHeight = 0 }) {
                </p>
 
                <div className="flex gap-6 mt-4 md:mt-0">
-                  <a href="#" className="hover:text-white transition">
+                  <a href="/imprint" className="hover:text-white transition">
                      Impressum
                   </a>
                   <a href="#" className="hover:text-white transition">

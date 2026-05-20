@@ -2,19 +2,30 @@ import NavBarElement from './NavBarElement'
 import WhatsAppButton from './WhatsappButton'
 import { Link } from 'react-router'
 import { useEffect, useState } from 'react'
-import { header } from 'framer-motion/m'
 
-export default function Navbar({ heroHeight = 0 }) {
-   const [scrolled, setScrolled] = useState(false)
+export default function Navbar({ heroHeight = 0, forceScrolled = false }) {
+   const [scrolled, setScrolled] = useState(forceScrolled)
 
    useEffect(() => {
-      const handleScroll = () => {
-         setScrolled(window.scrollY > heroHeight)
+      // Legal pages etc.
+      if (forceScrolled) {
+         setScrolled(true)
+         return
       }
 
+      const handleScroll = () => {
+         // Trigger ONLY after hero fully passed
+         setScrolled(window.scrollY >= heroHeight)
+      }
+
+      handleScroll()
+
       window.addEventListener('scroll', handleScroll)
-      return () => window.removeEventListener('scroll', handleScroll)
-   }, [heroHeight])
+
+      return () => {
+         window.removeEventListener('scroll', handleScroll)
+      }
+   }, [heroHeight, forceScrolled])
    return (
       <header
          className={`fixed top-0 left-0 w-full z-50 bg-transparent ${
