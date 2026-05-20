@@ -30,7 +30,7 @@ export default function Home() {
             className="relative h-screen bg-cover bg-center"
             style={{
                backgroundImage:
-                  "url('https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2070&auto=format&fit=crop')",
+                  "url('../../images/9874a276-d03d-4d71-8a24-a3c449f8c06a.jpg')",
             }}
          >
             <div className="absolute inset-0 bg-black/40" />
@@ -38,7 +38,7 @@ export default function Home() {
             <div className="relative z-10 flex h-full items-center justify-center">
                <div className="text-center px-6">
                   <h3 className="text-white text-7xl font-bold leading-tight">
-                     Solaranlage & Smarthome
+                     Solaranlage & Smart Home
                   </h3>
 
                   <div className="mt-6 h-[42px] overflow-hidden relative">
