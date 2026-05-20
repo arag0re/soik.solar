@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import WhatsAppButton from '../components/WhatsAppButton'
+import WhatsAppButton from '../components/WhatsappButton'
 
 function Navbar() {
    return (
