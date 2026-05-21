@@ -18,9 +18,19 @@ export default function ContactPage() {
    const [success, setSuccess] = useState(false)
 
    const [error, setError] = useState('')
-
    useEffect(() => {
-      window.scrollTo(0, 0)
+      const handleHashChange = () => {
+         window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+         })
+      }
+
+      window.addEventListener('hashchange', handleHashChange)
+
+      return () => {
+         window.removeEventListener('hashchange', handleHashChange)
+      }
    }, [])
 
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

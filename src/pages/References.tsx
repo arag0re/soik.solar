@@ -45,7 +45,18 @@ const projects = [
 
 export default function ReferenzenPage() {
    useEffect(() => {
-      window.scrollTo(0, 0)
+      const handleHashChange = () => {
+         window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+         })
+      }
+
+      window.addEventListener('hashchange', handleHashChange)
+
+      return () => {
+         window.removeEventListener('hashchange', handleHashChange)
+      }
    }, [])
 
    const [active, setActive] = useState(0)

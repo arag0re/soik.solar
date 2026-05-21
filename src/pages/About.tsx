@@ -3,9 +3,20 @@ import Footer from '../components/Footer/Footer'
 import Navbar from '../components/NavBar/NavBar'
 
 export default function AboutPage() {
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+   useEffect(() => {
+      const handleHashChange = () => {
+         window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+         })
+      }
+
+      window.addEventListener('hashchange', handleHashChange)
+
+      return () => {
+         window.removeEventListener('hashchange', handleHashChange)
+      }
+   }, [])
 
    return (
       <div className="min-h-screen bg-white text-[#0B2D5C] overflow-hidden">

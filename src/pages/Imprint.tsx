@@ -4,7 +4,18 @@ import Navbar from '../components/NavBar/NavBar'
 
 export default function ImpressumPage() {
    useEffect(() => {
-      window.scrollTo(0, 0)
+      const handleHashChange = () => {
+         window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+         })
+      }
+
+      window.addEventListener('hashchange', handleHashChange)
+
+      return () => {
+         window.removeEventListener('hashchange', handleHashChange)
+      }
    }, [])
 
    return (

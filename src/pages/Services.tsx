@@ -75,8 +75,19 @@ const services = [
 
 export default function ServicePage() {
     useEffect(() => {
-       window.scrollTo(0, 0)
-    }, [])
+   const handleHashChange = () => {
+      window.scrollTo({
+         top: 0,
+         behavior: 'smooth',
+      })
+   }
+
+   window.addEventListener('hashchange', handleHashChange)
+
+   return () => {
+      window.removeEventListener('hashchange', handleHashChange)
+   }
+}, [])
 
    return (
       <div className="min-h-screen bg-white text-[#0B2D5C] overflow-hidden">
