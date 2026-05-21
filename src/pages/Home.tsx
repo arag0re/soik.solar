@@ -3,20 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import NavBar from '../components/NavBar/NavBar'
 import Footer from '../components/Footer/Footer'
 
-async function submitToGoogleForm(form: any) {
-   const data = new URLSearchParams()
-
-   data.append('entry.123456789', form.name)
-   data.append('entry.987654321', form.email)
-   data.append('entry.111222333', form.address)
-
-   await fetch('https://docs.google.com/forms/d/e/FORM_ID/formResponse', {
-      method: 'POST',
-      mode: 'no-cors',
-      body: data,
-   })
-}
-
 export default function Home() {
    const [open, setOpen] = useState(false)
    const [step, setStep] = useState(0)
@@ -326,7 +312,7 @@ export default function Home() {
                      ) : (
                         <button
                            onClick={async () => {
-                              await submitToGoogleForm(form)
+                              //await submitToGoogleForm(form)
                            }}
                            className="bg-[#ffa940] hover:bg-yellow-300 text-black px-6 py-3 rounded-xl font-bold"
                         >
