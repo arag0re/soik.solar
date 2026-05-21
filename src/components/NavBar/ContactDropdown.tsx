@@ -5,7 +5,7 @@ import NavBarElement from './NavBarElement'
 
 export default function ContactDropdownNav() {
    const [open, setOpen] = useState(false)
-   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
    const handleEnter = () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)

@@ -1,6 +1,6 @@
 import { MessageCircle } from 'lucide-react'
 
-export default function WhatsAppButton({ scrolled }) {
+export default function WhatsAppButton({ scrolled }: { scrolled: boolean }) {
    return (
       <a
          href="https://wa.me/+15559879566"
