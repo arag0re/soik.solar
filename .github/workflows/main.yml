@@ -47,10 +47,6 @@ jobs:
           name: production-files
           path: ./build
 
-      - name: Fix basename in index.html
-        run: |
-          sed -i 's|window.__reactRouterContext = {"basename":"/"|window.__reactRouterContext = {"basename":"/soik.solar"|g' ./build/client/index.html
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
