@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from '../components/Footer/Footer'
 import Navbar from '../components/NavBar/NavBar'
 import {
@@ -44,6 +44,10 @@ const projects = [
 ]
 
 export default function ReferenzenPage() {
+   useEffect(() => {
+      window.scrollTo(0, 0)
+   }, [])
+
    const [active, setActive] = useState(0)
 
    const nextSlide = () => {

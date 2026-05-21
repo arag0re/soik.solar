@@ -29,6 +29,10 @@ export default function Home() {
    }, [])
 
    useEffect(() => {
+      window.scrollTo(0, 0)
+   }, [])
+
+   useEffect(() => {
       const interval = setInterval(() => {
          setCurrentText((prev) => (prev + 1) % rotatingTexts.length)
       }, 1200)

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from '../components/Footer/Footer'
 import Navbar from '../components/NavBar/NavBar'
 
@@ -18,6 +18,10 @@ export default function ContactPage() {
    const [success, setSuccess] = useState(false)
 
    const [error, setError] = useState('')
+
+   useEffect(() => {
+      window.scrollTo(0, 0)
+   }, [])
 
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()

@@ -1,7 +1,12 @@
+import { useEffect } from 'react'
 import Footer from '../components/Footer/Footer'
 import Navbar from '../components/NavBar/NavBar'
 
 export default function PrivacyPage() {
+   useEffect(() => {
+      window.scrollTo(0, 0)
+   }, [])
+
    return (
       <div className="min-h-screen bg-white text-[#0B2D5C]">
          <main className="max-w-3xl mx-auto px-6 pt-20 pb-12">

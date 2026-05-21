@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Footer from '../components/Footer/Footer'
 import Navbar from '../components/NavBar/NavBar'
 
@@ -73,6 +74,10 @@ const services = [
 ]
 
 export default function ServicePage() {
+    useEffect(() => {
+       window.scrollTo(0, 0)
+    }, [])
+
    return (
       <div className="min-h-screen bg-white text-[#0B2D5C] overflow-hidden">
          <Navbar forceScrolled />
