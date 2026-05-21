@@ -7,7 +7,7 @@ export default function PrivacyPage() {
          <main className="max-w-3xl mx-auto px-6 pt-20 pb-12">
             <Navbar forceScrolled />
             <div className="mb-8">
-               <p className="text-sm uppercase tracking-[0.24em] text-slate-500">
+               <p className="text-sm uppercase tracking-[0.24em] text-[#ffa940] font-medium">
                   Datenschutzerklärung
                </p>
                <h1 className="text-3xl font-semibold mt-2">

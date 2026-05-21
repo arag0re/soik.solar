@@ -26,7 +26,7 @@ export default function ContactDropdownNav() {
          onMouseLeave={handleLeave}
       >
          {/* TRIGGER */}
-         <NavBarElement text="Kontakt" href="#" />
+         <NavBarElement text="Kontakt" href="/#/contact" />
          {/* DROPDOWN */}
          {open && (
             <div className="absolute top-10 left-1/2 -translate-x-1/2 w-56 bg-white shadow-xl rounded-xl overflow-hidden z-50 py-2 mt-5">

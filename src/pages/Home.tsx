@@ -3,7 +3,32 @@ import { motion, AnimatePresence } from 'framer-motion'
 import NavBar from '../components/NavBar/NavBar'
 import Footer from '../components/Footer/Footer'
 
+async function submitToGoogleForm(form: any) {
+   const data = new URLSearchParams()
+
+   data.append('entry.123456789', form.name)
+   data.append('entry.987654321', form.email)
+   data.append('entry.111222333', form.address)
+
+   await fetch('https://docs.google.com/forms/d/e/FORM_ID/formResponse', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: data,
+   })
+}
+
 export default function Home() {
+   const [open, setOpen] = useState(false)
+   const [step, setStep] = useState(0)
+
+   const [form, setForm] = useState({
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+      roofType: '',
+      consumption: '',
+   })
    const rotatingTexts = [
       'Photovoltaik vom Fachbetrieb',
       'Persönlich. Regional. Ehrlich.',
@@ -81,10 +106,10 @@ export default function Home() {
                   </div>
 
                   <button
-                     onClick={() => (window.location.href = '/roi')}
-                     className="mt-10 bg-yellow-400 hover:bg-yellow-300 text-black px-8 py-5 rounded-2xl text-lg font-bold transition"
+                     onClick={() => setOpen(true)}
+                     className="mt-10 bg-[#ffa940] hover:bg-yellow-300 text-black px-8 py-5 rounded-2xl text-lg font-bold transition"
                   >
-                     Jetzt Amortisationsberechnung durchführen
+                     Jetzt Ersparnis berechnen
                   </button>
                </div>
             </div>
@@ -163,6 +188,155 @@ export default function Home() {
             </div>
          </section>
          <Footer heroHeight={heroHeight} />
+         {open && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+               <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="w-full max-w-2xl rounded-3xl bg-[#0B2D5C] text-white shadow-2xl border border-white/10 overflow-hidden"
+               >
+                  {/* HEADER */}
+                  <div className="p-6 border-b border-white/10 flex justify-between items-center">
+                     <h2 className="text-xl font-bold">
+                        Solar Ersparnis Rechner
+                     </h2>
+
+                     <button
+                        onClick={() => setOpen(false)}
+                        className="text-white/60 hover:text-white"
+                     >
+                        ✕
+                     </button>
+                  </div>
+
+                  {/* CONTENT */}
+                  <div className="p-8 space-y-6">
+                     {/* STEP INDICATOR */}
+                     <div className="flex gap-2">
+                        {[0, 1, 2].map((i) => (
+                           <div
+                              key={i}
+                              className={`h-2 flex-1 rounded-full ${
+                                 step >= i ? 'bg-[#ffa940]' : 'bg-white/10'
+                              }`}
+                           />
+                        ))}
+                     </div>
+
+                     {/* STEP 1 */}
+                     {step === 0 && (
+                        <div className="space-y-4">
+                           <h3 className="text-lg font-semibold">
+                              Wer bist du?
+                           </h3>
+
+                           <input
+                              placeholder="Name"
+                              className="w-full p-4 rounded-xl bg-white/5 border border-white/10"
+                              onChange={(e) =>
+                                 setForm({ ...form, name: e.target.value })
+                              }
+                           />
+
+                           <input
+                              placeholder="E-Mail"
+                              className="w-full p-4 rounded-xl bg-white/5 border border-white/10"
+                              onChange={(e) =>
+                                 setForm({ ...form, email: e.target.value })
+                              }
+                           />
+                        </div>
+                     )}
+
+                     {/* STEP 2 */}
+                     {step === 1 && (
+                        <div className="space-y-4">
+                           <h3 className="text-lg font-semibold">
+                              Standort & Haus
+                           </h3>
+
+                           <input
+                              placeholder="Adresse"
+                              className="w-full p-4 rounded-xl bg-white/5 border border-white/10"
+                              onChange={(e) =>
+                                 setForm({ ...form, address: e.target.value })
+                              }
+                           />
+
+                           <input
+                              placeholder="Jahresverbrauch (kWh)"
+                              className="w-full p-4 rounded-xl bg-white/5 border border-white/10"
+                              onChange={(e) =>
+                                 setForm({
+                                    ...form,
+                                    consumption: e.target.value,
+                                 })
+                              }
+                           />
+                        </div>
+                     )}
+
+                     {/* STEP 3 */}
+                     {step === 2 && (
+                        <div className="space-y-4">
+                           <h3 className="text-lg font-semibold">
+                              Fast geschafft
+                           </h3>
+
+                           <select
+                              className="w-full p-4 rounded-xl bg-white/5 border border-white/10"
+                              onChange={(e) =>
+                                 setForm({ ...form, roofType: e.target.value })
+                              }
+                           >
+                              <option value="">Dachtyp wählen</option>
+                              <option>Flachdach</option>
+                              <option>Schrägdach</option>
+                              <option>Garage</option>
+                           </select>
+
+                           <input
+                              placeholder="Telefon (optional)"
+                              className="w-full p-4 rounded-xl bg-white/5 border border-white/10"
+                              onChange={(e) =>
+                                 setForm({ ...form, phone: e.target.value })
+                              }
+                           />
+                        </div>
+                     )}
+                  </div>
+
+                  {/* FOOTER ACTIONS */}
+                  <div className="p-6 border-t border-white/10 flex justify-between">
+                     <button
+                        onClick={() => setStep((s) => Math.max(s - 1, 0))}
+                        className="text-white/60 hover:text-white"
+                     >
+                        Zurück
+                     </button>
+
+                     {step < 2 ? (
+                        <button
+                           onClick={() => setStep((s) => s + 1)}
+                           className="bg-[#ffa940] hover:bg-yellow-300 text-black px-6 py-3 rounded-xl font-bold"
+                        >
+                           Weiter
+                        </button>
+                     ) : (
+                        <button
+                           onClick={async () => {
+                              await submitToGoogleForm(form)
+                           }}
+                           className="bg-[#ffa940] hover:bg-yellow-300 text-black px-6 py-3 rounded-xl font-bold"
+                        >
+                           Ersparnis berechnen
+                        </button>
+                     )}
+                  </div>
+               </motion.div>
+            </div>
+         )}
       </main>
    )
 }

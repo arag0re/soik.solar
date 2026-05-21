@@ -63,10 +63,10 @@ export default function Navbar({ heroHeight = 0, forceScrolled = false }) {
             <div className="flex-1 flex justify-center pt-3">
                <nav className="bg-white rounded-3xl px-8 h-14 flex items-center">
                   <div className="flex items-center gap-8">
-                     <NavBarElement text="Produkte" href="#produkte" />
-                     <NavBarElement text="Service" href="#service" />
-                     <NavBarElement text="Referenzen" href="#referenzen" />
-                     <NavBarElement text="Über uns" href="#uber-uns" />
+                     <NavBarElement text="Start" href="/" />
+                     <NavBarElement text="Leistungen" href="/#/service" />
+                     <NavBarElement text="Referenzen" href="/#/references" />
+                     <NavBarElement text="Über uns" href="/#/about" />
                      <ContactDropdownNav />
                   </div>
                </nav>
